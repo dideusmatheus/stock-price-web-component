@@ -6,56 +6,45 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first": string;
-        /**
-          * The last name
-         */
-        "last": string;
-        /**
-          * The middle name
-         */
-        "middle": string;
+    interface MdStockPrice {
+    }
+    interface StockPrice {
     }
 }
 declare global {
-    interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
+    interface HTMLMdStockPriceElement extends Components.MdStockPrice, HTMLStencilElement {
     }
-    var HTMLMyComponentElement: {
-        prototype: HTMLMyComponentElement;
-        new (): HTMLMyComponentElement;
+    var HTMLMdStockPriceElement: {
+        prototype: HTMLMdStockPriceElement;
+        new (): HTMLMdStockPriceElement;
+    };
+    interface HTMLStockPriceElement extends Components.StockPrice, HTMLStencilElement {
+    }
+    var HTMLStockPriceElement: {
+        prototype: HTMLStockPriceElement;
+        new (): HTMLStockPriceElement;
     };
     interface HTMLElementTagNameMap {
-        "my-component": HTMLMyComponentElement;
+        "md-stock-price": HTMLMdStockPriceElement;
+        "stock-price": HTMLStockPriceElement;
     }
 }
 declare namespace LocalJSX {
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first"?: string;
-        /**
-          * The last name
-         */
-        "last"?: string;
-        /**
-          * The middle name
-         */
-        "middle"?: string;
+    interface MdStockPrice {
+    }
+    interface StockPrice {
     }
     interface IntrinsicElements {
-        "my-component": MyComponent;
+        "md-stock-price": MdStockPrice;
+        "stock-price": StockPrice;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "md-stock-price": LocalJSX.MdStockPrice & JSXBase.HTMLAttributes<HTMLMdStockPriceElement>;
+            "stock-price": LocalJSX.StockPrice & JSXBase.HTMLAttributes<HTMLStockPriceElement>;
         }
     }
 }
