@@ -1,0 +1,148 @@
+:host {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 2rem auto;
+  padding: 1.5rem;
+  max-width: 400px;
+  background-color: #ffffff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+:host(:hover) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+form input {
+  font: inherit;
+  color: #333333;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  width: calc(100% - 1rem);
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+}
+
+form input:focus {
+  outline: none;
+  border-color: #6200ee;
+  box-shadow: 0 0 4px rgba(98, 0, 238, 0.4);
+}
+
+form button {
+  font: inherit;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  background-color: #6200ee;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  width: 100%;
+}
+
+form button:hover {
+  background-color: #3700b3;
+  transform: translateY(-2px);
+}
+
+form button:focus {
+  outline: none;
+  box-shadow: 0 0 6px rgba(98, 0, 238, 0.5);
+}
+
+form button:active {
+  transform: translateY(1px);
+}
+
+form button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.item{
+  padding: 1rem 0;
+}
+
+/* .content{
+  padding-top: 1rem;
+}
+
+.info{
+  display: flex;
+} */
+
+/* .info-title{
+  width: 45%;
+  margin: 0;
+  font-weight: bold;
+  color: #6200ee;
+}
+
+.info-value{
+  width: 55%;
+  margin: 0;
+  padding-left: 1rem;
+}
+
+.error {
+  padding-top: 1rem;
+  color: red;
+  font-weight: bold;
+  font-size: 1rem;
+  text-align: center;
+} */
+
+.info {
+  padding-top: 1rem;
+  display: grid;
+  gap: 15px;
+}
+
+.item-card {
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+  background-color: #fff;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.item-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.item-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.item-symbol {
+  color: #6200ee;
+}
+
+.item-name {
+  color: #555;
+}
+
+.item-details div {
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #666;
+}
+
+.no-results {
+  font-size: 16px;
+  color: #999;
+  text-align: center;
+}

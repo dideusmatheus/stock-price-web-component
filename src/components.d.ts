@@ -6,34 +6,76 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface MdStockFinder {
+    }
     interface MdStockPrice {
         "stockSymbol": string;
     }
+    interface StockFinder {
+    }
+}
+export interface MdStockFinderCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLMdStockFinderElement;
 }
 declare global {
+    interface HTMLMdStockFinderElementEventMap {
+        "mdsymbolSelected": any;
+    }
+    interface HTMLMdStockFinderElement extends Components.MdStockFinder, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLMdStockFinderElementEventMap>(type: K, listener: (this: HTMLMdStockFinderElement, ev: MdStockFinderCustomEvent<HTMLMdStockFinderElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLMdStockFinderElementEventMap>(type: K, listener: (this: HTMLMdStockFinderElement, ev: MdStockFinderCustomEvent<HTMLMdStockFinderElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLMdStockFinderElement: {
+        prototype: HTMLMdStockFinderElement;
+        new (): HTMLMdStockFinderElement;
+    };
     interface HTMLMdStockPriceElement extends Components.MdStockPrice, HTMLStencilElement {
     }
     var HTMLMdStockPriceElement: {
         prototype: HTMLMdStockPriceElement;
         new (): HTMLMdStockPriceElement;
     };
+    interface HTMLStockFinderElement extends Components.StockFinder, HTMLStencilElement {
+    }
+    var HTMLStockFinderElement: {
+        prototype: HTMLStockFinderElement;
+        new (): HTMLStockFinderElement;
+    };
     interface HTMLElementTagNameMap {
+        "md-stock-finder": HTMLMdStockFinderElement;
         "md-stock-price": HTMLMdStockPriceElement;
+        "stock-finder": HTMLStockFinderElement;
     }
 }
 declare namespace LocalJSX {
+    interface MdStockFinder {
+        "onMdsymbolSelected"?: (event: MdStockFinderCustomEvent<any>) => void;
+    }
     interface MdStockPrice {
         "stockSymbol"?: string;
     }
+    interface StockFinder {
+    }
     interface IntrinsicElements {
+        "md-stock-finder": MdStockFinder;
         "md-stock-price": MdStockPrice;
+        "stock-finder": StockFinder;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "md-stock-finder": LocalJSX.MdStockFinder & JSXBase.HTMLAttributes<HTMLMdStockFinderElement>;
             "md-stock-price": LocalJSX.MdStockPrice & JSXBase.HTMLAttributes<HTMLMdStockPriceElement>;
+            "stock-finder": LocalJSX.StockFinder & JSXBase.HTMLAttributes<HTMLStockFinderElement>;
         }
     }
 }

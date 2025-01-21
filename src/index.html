@@ -10,5 +10,13 @@
   </head>
   <body>
     <md-stock-price stock-symbol=""></md-stock-price>
+    <md-stock-finder></md-stock-finder>
+
+    <script>
+      const stockFinderElement = document.querySelector('md-stock-finder');
+      stockFinderElement.addEventListener('mdsymbolSelected', event => {
+        console.log('event', event)
+      })
+    </script>
   </body>
 </html>
