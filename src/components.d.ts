@@ -8,8 +8,6 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface MdStockPrice {
     }
-    interface StockPrice {
-    }
 }
 declare global {
     interface HTMLMdStockPriceElement extends Components.MdStockPrice, HTMLStencilElement {
@@ -18,25 +16,15 @@ declare global {
         prototype: HTMLMdStockPriceElement;
         new (): HTMLMdStockPriceElement;
     };
-    interface HTMLStockPriceElement extends Components.StockPrice, HTMLStencilElement {
-    }
-    var HTMLStockPriceElement: {
-        prototype: HTMLStockPriceElement;
-        new (): HTMLStockPriceElement;
-    };
     interface HTMLElementTagNameMap {
         "md-stock-price": HTMLMdStockPriceElement;
-        "stock-price": HTMLStockPriceElement;
     }
 }
 declare namespace LocalJSX {
     interface MdStockPrice {
     }
-    interface StockPrice {
-    }
     interface IntrinsicElements {
         "md-stock-price": MdStockPrice;
-        "stock-price": StockPrice;
     }
 }
 export { LocalJSX as JSX };
@@ -44,7 +32,6 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "md-stock-price": LocalJSX.MdStockPrice & JSXBase.HTMLAttributes<HTMLMdStockPriceElement>;
-            "stock-price": LocalJSX.StockPrice & JSXBase.HTMLAttributes<HTMLStockPriceElement>;
         }
     }
 }

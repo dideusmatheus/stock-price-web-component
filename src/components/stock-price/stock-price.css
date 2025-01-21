@@ -61,8 +61,12 @@ form button:active {
   transform: translateY(1px);
 }
 
+form button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
 div {
-  margin-top: 1rem;
   text-align: center;
   font-size: 1.25rem;
   color: #6200ee;
@@ -71,4 +75,15 @@ div {
 p {
   margin: 0;
   font-weight: bold;
+}
+
+.error {
+  padding-top: 1rem;
+  color: red;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.content{
+  padding-top: 1rem;
 }
