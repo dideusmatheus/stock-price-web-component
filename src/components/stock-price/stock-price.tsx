@@ -1,4 +1,4 @@
-import { Component, h, State, Prop } from '@stencil/core';
+import { Component, h, State, Prop, Watch } from '@stencil/core';
 import { AV_API_KEY } from '../../global/global';
 
 @Component({
@@ -16,6 +16,14 @@ export class StockPrice {
   @State() loading: boolean = false;
 
   @Prop() stockSymbol: string = '';
+
+  @Watch('stockSymbol')
+  stockSymbolChanged(newValue: string, oldValue: string){
+    if(newValue !== oldValue){
+      this.stockUserInput = newValue;
+      this.fetchStockPrice();
+    }
+  }
 
   validateInput(input: string): boolean {
     return /^[a-zA-Z0-9]+$/.test(input.trim());
@@ -36,7 +44,7 @@ export class StockPrice {
     this.objResponse = null;
   }
 
-  async onFetchStockPrice(event: Event) {
+  onFetchStockPrice(event: Event) {
     event.preventDefault();
 
     if (!this.stockInputValid || !this.stockUserInput.trim()) {
