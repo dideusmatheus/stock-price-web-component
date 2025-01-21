@@ -66,15 +66,25 @@ form button:disabled {
   cursor: not-allowed;
 }
 
-div {
-  text-align: center;
-  font-size: 1.25rem;
+.content{
+  padding-top: 1rem;
+}
+
+.info{
+  display: flex;
+}
+
+.info-title{
+  width: 45%;
+  margin: 0;
+  font-weight: bold;
   color: #6200ee;
 }
 
-p {
+.info-value{
+  width: 55%;
   margin: 0;
-  font-weight: bold;
+  padding-left: 1rem;
 }
 
 .error {
@@ -82,8 +92,6 @@ p {
   color: red;
   font-weight: bold;
   font-size: 1rem;
+  text-align: center;
 }
 
-.content{
-  padding-top: 1rem;
-}

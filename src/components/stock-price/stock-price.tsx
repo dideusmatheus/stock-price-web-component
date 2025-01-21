@@ -1,4 +1,4 @@
-import { Component, h, State } from '@stencil/core';
+import { Component, h, State, Prop } from '@stencil/core';
 import { AV_API_KEY } from '../../global/global';
 
 @Component({
@@ -14,6 +14,8 @@ export class StockPrice {
   @State() stockInputValid: boolean = false;
   @State() error: string = '';
   @State() loading: boolean = false;
+
+  @Prop() stockSymbol: string = '';
 
   validateInput(input: string): boolean {
     return /^[a-zA-Z0-9]+$/.test(input.trim());
@@ -45,6 +47,10 @@ export class StockPrice {
     this.loading = true;
     this.error = null;
 
+    this.fetchStockPrice();
+  }
+
+  async fetchStockPrice(){
     try {
       const res = await fetch(
         `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${this.stockUserInput}&apikey=${AV_API_KEY}`
@@ -60,7 +66,8 @@ export class StockPrice {
       }
 
       this.objResponse = parsedRes;
-      this.stockUserInput = '';
+      // this.stockUserInput = '';
+      // this.stockInputValid = true;
     } catch (err) {
       this.error = err.message;
       this.objResponse = null;
@@ -69,6 +76,54 @@ export class StockPrice {
     }
   }
 
+  formatDollar(value: any): string {
+    const numericValue = parseFloat(value);
+    if(!value){
+      return 'N/A';
+    }
+
+    const valueString = numericValue.toString();
+    const [integerPart, decimalPart = ''] = valueString.split('.');
+
+    const truncatedDecimal = decimalPart.substring(0, 2).padEnd(2, '0');
+    return `$${integerPart},${truncatedDecimal}`;
+  }
+
+  formatDate(dateString: string): string {
+    if(!dateString){
+      return 'N/A';
+    }
+    const [year, month, day] = dateString.split('-');
+    return `${day}/${month}/${year}`;
+  }
+
+  // All lifecycle hooks
+  //function is called before render()
+  componentWillLoad(){
+    console.log('componentWillLoad');
+  }
+  componentDidLoad() {
+    if (this.stockSymbol) {
+      this.stockUserInput = this.stockSymbol;
+      this.stockInputValid = this.validateInput(this.stockSymbol);
+      if (this.stockInputValid) {
+        this.fetchStockPrice();
+      } else {
+        this.error = 'Invalid stock symbol.';
+      }
+    }
+  }
+  
+  componentWillUpdate(){
+    console.log('componentWillUpdate');
+  }  
+  componentDidUpdate(){
+    console.log('componentDidUpdate');
+  }
+  // componentDidUnload(){
+  //   console.log('componentDidUpdate');
+  // }
+
   render() {
     let dataContent = null;
   
@@ -76,13 +131,39 @@ export class StockPrice {
       dataContent = <p class="error">{this.error}</p>;
     } else if (this.objResponse) {
       const globalQuote = this.objResponse?.['Global Quote'];
-      const price = globalQuote?.['05. price'] ?? 'N/A';
       const symbol = globalQuote?.['01. symbol'] ?? 'N/A';
+      const price = this.formatDollar(globalQuote?.['05. price']);
+      const lastestDay = this.formatDate(globalQuote?.['07. latest trading day']);
+      const open = this.formatDollar(globalQuote?.['02. open']);
+      const high = this.formatDollar(globalQuote?.['03. high']);
+      const low = this.formatDollar(globalQuote?.['04. low']);
   
       dataContent = (
         <div class="content">
-          <p>Symbol: {symbol}</p>
-          <p>Price: ${price}</p>
+          <div class="info">
+            <p class="info-title">Symbol:</p>
+            <p class="info-value">{symbol}</p>
+          </div>
+          <div class="info">
+            <p class="info-title">Price:</p>
+            <p class="info-value">{price}</p>
+          </div>
+          <div class="info">
+            <p class="info-title">Open:</p>
+            <p class="info-value">{open}</p>
+          </div>
+          <div class="info">
+            <p class="info-title">High:</p>
+            <p class="info-value">{high}</p>
+          </div>
+          <div class="info">
+            <p class="info-title">Low:</p>
+            <p class="info-value">{low}</p>
+          </div>
+          <div class="info">
+            <p class="info-title">Latest trading day:</p>
+            <p class="info-value">{lastestDay}</p>
+          </div>
         </div>
       );
     }
