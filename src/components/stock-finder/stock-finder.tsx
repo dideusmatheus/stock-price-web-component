@@ -52,6 +52,7 @@ export class StockFinder {
   clearSearchResponse(){
     if (this.stockNameInput.value.trim() === '') {
       this.searchResponse = null;
+      this.error = '';
     }
   }
 
