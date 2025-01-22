@@ -11,8 +11,6 @@ export namespace Components {
     interface MdStockPrice {
         "stockSymbol": string;
     }
-    interface StockFinder {
-    }
 }
 export interface MdStockFinderCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -42,16 +40,9 @@ declare global {
         prototype: HTMLMdStockPriceElement;
         new (): HTMLMdStockPriceElement;
     };
-    interface HTMLStockFinderElement extends Components.StockFinder, HTMLStencilElement {
-    }
-    var HTMLStockFinderElement: {
-        prototype: HTMLStockFinderElement;
-        new (): HTMLStockFinderElement;
-    };
     interface HTMLElementTagNameMap {
         "md-stock-finder": HTMLMdStockFinderElement;
         "md-stock-price": HTMLMdStockPriceElement;
-        "stock-finder": HTMLStockFinderElement;
     }
 }
 declare namespace LocalJSX {
@@ -61,12 +52,9 @@ declare namespace LocalJSX {
     interface MdStockPrice {
         "stockSymbol"?: string;
     }
-    interface StockFinder {
-    }
     interface IntrinsicElements {
         "md-stock-finder": MdStockFinder;
         "md-stock-price": MdStockPrice;
-        "stock-finder": StockFinder;
     }
 }
 export { LocalJSX as JSX };
@@ -75,7 +63,6 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "md-stock-finder": LocalJSX.MdStockFinder & JSXBase.HTMLAttributes<HTMLMdStockFinderElement>;
             "md-stock-price": LocalJSX.MdStockPrice & JSXBase.HTMLAttributes<HTMLMdStockPriceElement>;
-            "stock-finder": LocalJSX.StockFinder & JSXBase.HTMLAttributes<HTMLStockFinderElement>;
         }
     }
 }
