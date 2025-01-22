@@ -31,7 +31,7 @@ form input {
 
 form input:focus {
   outline: none;
-  border-color: #6200ee;
+  border-color: var(--color-primary);
   box-shadow: 0 0 4px rgba(98, 0, 238, 0.4);
 }
 
@@ -40,7 +40,7 @@ form button {
   padding: 0.5rem 1rem;
   border: none;
   border-radius: 6px;
-  background-color: #6200ee;
+  background-color: var(--color-primary);
   color: #ffffff;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
@@ -48,7 +48,7 @@ form button {
 }
 
 form button:hover {
-  background-color: #3700b3;
+  background-color: var(--color-second);
   transform: translateY(-2px);
 }
 
@@ -69,35 +69,6 @@ form button:disabled {
 .item{
   padding: 1rem 0;
 }
-
-/* .content{
-  padding-top: 1rem;
-}
-
-.info{
-  display: flex;
-} */
-
-/* .info-title{
-  width: 45%;
-  margin: 0;
-  font-weight: bold;
-  color: #6200ee;
-}
-
-.info-value{
-  width: 55%;
-  margin: 0;
-  padding-left: 1rem;
-}
-
-.error {
-  padding-top: 1rem;
-  color: red;
-  font-weight: bold;
-  font-size: 1rem;
-  text-align: center;
-} */
 
 .info {
   padding-top: 1rem;
@@ -128,7 +99,7 @@ form button:disabled {
 }
 
 .item-symbol {
-  color: #6200ee;
+  color: var(--color-primary);
 }
 
 .item-name {

@@ -1,4 +1,4 @@
-import { Component, h, State, Prop, Watch } from '@stencil/core';
+import { Component, h, State, Prop, Watch, Listen } from '@stencil/core';
 import { AV_API_KEY } from '../../global/global';
 
 @Component({
@@ -21,6 +21,7 @@ export class StockPrice {
   stockSymbolChanged(newValue: string, oldValue: string){
     if(newValue !== oldValue){
       this.stockUserInput = newValue;
+      this.stockInputValid = true;
       this.fetchStockPrice();
     }
   }
@@ -79,6 +80,7 @@ export class StockPrice {
     } catch (err) {
       this.error = err.message;
       this.objResponse = null;
+      this.loading = false;
     } finally {
       this.loading = false;
     }
@@ -131,6 +133,13 @@ export class StockPrice {
   // componentDidUnload(){
   //   console.log('componentDidUpdate');
   // }
+
+  @Listen('mdsymbolSelected', { target: 'body' })
+  onStockSymbolSelected(event: CustomEvent){
+    if(event.detail && event.detail !== this.stockSymbol){
+      this.stockSymbol = event.detail;
+    }
+  }
 
   render() {
     let dataContent = null;

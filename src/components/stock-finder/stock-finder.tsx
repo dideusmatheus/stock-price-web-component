@@ -156,7 +156,6 @@ export class StockFinder {
   }
 
   onSelectSymbol(stock: any){
-    console.log(stock)
     const stockSymbol = stock['1. symbol'];
     this.mdsymbolSelected.emit(stockSymbol);
   }
