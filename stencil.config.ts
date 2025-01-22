@@ -17,7 +17,8 @@ export const config: Config = {
     },
     {
       type: 'www',
-      serviceWorker: null, // disable service workers
+      dir: 'docs', // Gera os arquivos diretamente na pasta "docs"
+      serviceWorker: null, // Desativa o service worker para evitar problemas de cache
     },
   ],
   testing: {
