@@ -1,9 +1,9 @@
 <!doctype html><html dir="ltr" lang="en"><head> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"> <title>Stencil Component Starter</title> <style>html {
         --color-primary: #6200ee;
         --color-second: #3700b3;
-      }</style> <link rel="modulepreload" href="/build/p-60af099a.js"><script type="module" data-stencil data-resources-url="/build/" data-stencil-namespace="web-components-stock-price">import{p as o,b as e}from"/build/p-60af099a.js";export{s as setNonce}from"/build/p-60af099a.js";import{g as t}from"/build/p-e1255160.js";var r=()=>{const s=import.meta.url;const e={};if(s!==""){e.resourcesUrl=new URL(".",s).href}return o(e)};r().then((async o=>{await t();return e([["p-a751e08f",[[1,"md-stock-finder",{searchResponse:[32],error:[32]}],[1,"md-stock-price",{stockSymbol:[1,"stock-symbol"],objResponse:[32],stockUserInput:[32],stockInputValid:[32],error:[32],loading:[32]},[[16,"mdsymbolSelected","onStockSymbolSelected"]],{stockSymbol:["stockSymbolChanged"]}]]]],o)}));
-//# sourceMappingURL=web-components-stock-price.esm.js.map
-</script> <script nomodule="" src="/build/web-components-stock-price.js" data-stencil></script> </head> <body> <md-stock-price stock-symbol=""></md-stock-price> <md-stock-finder></md-stock-finder> <!-- 
+      }</style> <script type="module" src="/stock-price-web-component/build/web-components-stock-price.esm.js"></script> <script nomodule="" src="/stock-price-web-component/build/web-components-stock-price.js"></script> <!-- 
+    <script type="module" src="/build/web-components-stock-price.esm.js"></script>
+    <script nomodule src="/build/web-components-stock-price.js"></script> --> </head> <body> <md-stock-price stock-symbol=""></md-stock-price> <md-stock-finder></md-stock-finder> <!-- 
     <script>
       const stockFinderElement = document.querySelector('md-stock-finder');
       stockFinderElement.addEventListener('mdsymbolSelected', event => {
